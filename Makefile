@@ -1,6 +1,6 @@
 # Makefile
 
-.PHONY: prepare plan apply destroy fmt
+.PHONY: prepare plan apply ssh destroy fmt
 
 PUBLIC_IP := $(shell cat terraform/terraform.tfstate | grep '"public_ip":' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 
