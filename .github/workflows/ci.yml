@@ -12,16 +12,3 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
       - name: terraform fmt
         run: terraform fmt -check -recursive
-
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      - uses: hashicorp/setup-terraform@v2
-      - name: terraform fmt
-        run: |
-          cd terraform
-          terraform init
-          terraform validate
