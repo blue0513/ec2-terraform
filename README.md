@@ -1,5 +1,7 @@
 # EC2 Terraform
 
+[![CI](https://github.com/blue0513/ec2-terraform/actions/workflows/ci.yml/badge.svg)](https://github.com/blue0513/ec2-terraform/actions/workflows/ci.yml)
+
 This repository can assist you in quickly creating EC2 instances.
 
 ## Quick Start
