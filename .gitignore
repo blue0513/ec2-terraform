@@ -4,4 +4,5 @@
 terraform.tfvars
 .terraform.lock.hcl
 
-ssh-keys/
+ssh-keys/*
+!ssh-keys/.gitkeep
