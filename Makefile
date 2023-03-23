@@ -1,6 +1,6 @@
 # Makefile
 
-.PHONY: prepare plan apply ssh destroy fmt
+.PHONY: prepare plan apply ssh destroy fmt validate
 
 PUBLIC_IP := $(shell cat terraform/terraform.tfstate | grep '"public_ip":' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 
@@ -22,3 +22,6 @@ destroy:
 
 fmt:
 	cd terraform && terraform fmt -recursive
+
+validate:
+	cd terraform && terraform validate
