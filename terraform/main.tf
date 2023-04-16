@@ -1,3 +1,14 @@
+variable "allow_ip" {
+  default = ["0.0.0.0/0"]
+}
+
+variable "ami" {
+  default = "ami-08347baaec0755352" # ubuntu 20.04
+}
+
+variable "instance_type" {
+  default = "t3.nano"
+}
 locals {
   my_pub_key = "../ssh-keys/my-ssh-key.pub"
 }
@@ -27,7 +38,7 @@ resource "aws_security_group" "server_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.allow_ip
   }
 
   egress {
@@ -39,9 +50,9 @@ resource "aws_security_group" "server_sg" {
 }
 
 resource "aws_instance" "server" {
-  ami                    = "ami-08347baaec0755352" # ubuntu 20.04
+  ami                    = var.ami
   key_name               = aws_key_pair.ssh_pub_key.key_name
-  instance_type          = "t3.nano"
+  instance_type          = var.instance_type
   subnet_id              = module.vpc.public_subnets[0]
   vpc_security_group_ids = [aws_security_group.server_sg.id]
 
